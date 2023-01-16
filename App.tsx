@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { Amplify, Auth } from 'aws-amplify';
-import awsconfig from './aws-exports';
+import awsconfig from './src/aws-exports';
 
 import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
@@ -17,7 +17,7 @@ const App = () => {
       >
         {({ signOut, user }) => (
           <>
-            <HomeScreen onSignOut={signOut} />
+            <HomeScreen user={user} onSignOut={signOut} />
             <StatusBar style="auto" />
           </>
         )}

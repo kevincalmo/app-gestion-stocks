@@ -1,0 +1,63 @@
+type Order @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  date: AWSDate
+  quantity: Int
+  price: String
+  Products: [Product] @hasMany(indexName: "byOrder", fields: ["id"])
+  Providers: [Provider] @hasMany(indexName: "byOrder", fields: ["id"])
+}
+
+type Request @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  date: AWSDate
+  quantity: Int
+  Agent: Agent @hasOne
+  Product: Product @hasOne
+}
+
+type Provider @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  adress: String
+  telephone: String
+  mail: AWSEmail
+  orderID: ID! @index(name: "byOrder")
+}
+
+type Agent @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  last_name: String
+  first_name: String
+  telephone: String
+}
+
+type Product @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  price: Float
+  bar_code: String
+  Stock: Stock @hasOne
+  quantity_total: Int
+  detail: AWSJSON
+  administratorID: ID! @index(name: "byAdministrator")
+  orderID: ID! @index(name: "byOrder")
+}
+
+type Category @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+}
+
+type Stock @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  Administrators: [Administrator] @hasMany(indexName: "byStock", fields: ["id"])
+}
+
+type Administrator @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}]) {
+  id: ID!
+  username: String
+  stockID: ID! @index(name: "byStock")
+  Products: [Product] @hasMany(indexName: "byAdministrator", fields: ["id"])
+}
+ 

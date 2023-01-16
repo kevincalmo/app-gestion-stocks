@@ -1,3 +1,4 @@
 export interface DefaultScreenProps {
-    onSignOut:any;
+    onSignOut: any;
+    user: any;
 }
