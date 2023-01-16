@@ -1,12 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+import { Amplify, Auth } from 'aws-amplify';
+import awsconfig from './aws-exports';
+
+import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import HomeScreen from './screens/HomeScreen';
+Amplify.configure(awsconfig);
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <><View style={styles.container}>
+      <Authenticator
+        hideSignUp={true}
+      >
+        {({ signOut, user }) => (
+          <>
+            <HomeScreen onSignOut={signOut} />
+            <StatusBar style="auto" />
+          </>
+        )}
+      </Authenticator>
     </View>
+    </>
   );
 }
 
@@ -18,3 +35,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App
