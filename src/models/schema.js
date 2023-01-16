@@ -154,13 +154,6 @@ export const schema = {
                         ]
                     }
                 },
-                "quantity_total": {
-                    "name": "quantity_total",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "detail": {
                     "name": "detail",
                     "isArray": false,
@@ -784,5 +777,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.4",
-    "version": "6751f83f396a2d63453a0a8b4af9e50e"
+    "version": "e4f60b6eaef01c87910cb99ccc542ebc"
 };

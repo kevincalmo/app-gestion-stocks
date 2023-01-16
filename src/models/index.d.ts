@@ -52,7 +52,6 @@ type EagerProduct = {
   readonly price?: number | null;
   readonly bar_code?: string | null;
   readonly Stock?: Stock | null;
-  readonly quantity_total?: number | null;
   readonly detail?: string | null;
   readonly administratorID: string;
   readonly orderID: string;
@@ -71,7 +70,6 @@ type LazyProduct = {
   readonly price?: number | null;
   readonly bar_code?: string | null;
   readonly Stock: AsyncItem<Stock | undefined>;
-  readonly quantity_total?: number | null;
   readonly detail?: string | null;
   readonly administratorID: string;
   readonly orderID: string;

@@ -37,7 +37,6 @@ type Product @model @auth(rules: [{allow: public}]) {
   price: Float
   bar_code: String
   Stock: Stock @hasOne
-  quantity_total: Int
   detail: AWSJSON
   administratorID: ID! @index(name: "byAdministrator")
   orderID: ID! @index(name: "byOrder")
