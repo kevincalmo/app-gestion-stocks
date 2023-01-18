@@ -54,7 +54,7 @@ type EagerProduct = {
   readonly Stock?: Stock | null;
   readonly detail?: string | null;
   readonly administratorID: string;
-  readonly orderID: string;
+  readonly orderID?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly productStockId?: string | null;
@@ -72,7 +72,7 @@ type LazyProduct = {
   readonly Stock: AsyncItem<Stock | undefined>;
   readonly detail?: string | null;
   readonly administratorID: string;
-  readonly orderID: string;
+  readonly orderID?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly productStockId?: string | null;

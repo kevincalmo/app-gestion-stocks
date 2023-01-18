@@ -172,7 +172,7 @@ export const schema = {
                     "name": "orderID",
                     "isArray": false,
                     "type": "ID",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "createdAt": {
@@ -777,5 +777,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.4",
-    "version": "e4f60b6eaef01c87910cb99ccc542ebc"
+    "version": "45196419470b07eb254b3d5361558eaa"
 };

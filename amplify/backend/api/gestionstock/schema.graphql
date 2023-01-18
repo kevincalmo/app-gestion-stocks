@@ -39,7 +39,7 @@ type Product @model @auth(rules: [{allow: public}]) {
   Stock: Stock @hasOne
   detail: AWSJSON
   administratorID: ID! @index(name: "byAdministrator")
-  orderID: ID! @index(name: "byOrder")
+  orderID: ID @index(name: "byOrder")
 }
 
 type Category @model @auth(rules: [{allow: public}]) {
