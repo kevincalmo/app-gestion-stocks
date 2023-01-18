@@ -1,29 +1,53 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-import { Amplify, Auth } from 'aws-amplify';
+import { Amplify, I18n} from 'aws-amplify';
 import awsconfig from './src/aws-exports';
-
-import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
+import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react-native';
 import HomeScreen from './screens/HomeScreen';
+import { DefaultScreenProps } from './types/screen';
+import { Button } from 'react-native';
 Amplify.configure(awsconfig);
 
+import { translations } from '@aws-amplify/ui';
+I18n.putVocabularies(translations);
+I18n.setLanguage('fr');
+
+I18n.putVocabularies({
+  fr: {
+    'Sign In': 'Se connecter',
+    'Sign Up': "S'inscrire",
+    'Forgot Password?': "Mot de passe oublié ?",
+    'Enter your Username':"Entrer votre nom d'utilisateur",
+    'Enter your Password':"Entrer votre mot de passe",
+    'Reset Password' : 'Reinitialiser votre mot de passe'
+  },
+});
+
+
+function SignOutButton() {
+  const { signOut } = useAuthenticator();
+  return <Button title="Sign Out" onPress={signOut} />;
+}
+
 const App = () => {
+
   return (
-    <><View style={styles.container}>
+    <Authenticator.Provider>
       <Authenticator
-        hideSignUp={true}
+        components={{
+          SignIn: (props) => (
+            <Authenticator.SignIn {...props} hideSignUp />
+          ),
+        }}
       >
-        {({ signOut, user }) => (
-          <>
-            <HomeScreen user={user} onSignOut={signOut} />
-            <StatusBar style="auto" />
-          </>
-        )}
+        <View style={styles.container}>
+          <HomeScreen />
+          <SignOutButton />
+        </View>
+
       </Authenticator>
-    </View>
-    </>
+    </Authenticator.Provider>
   );
 }
 
