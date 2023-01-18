@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 
-import { Amplify, I18n} from 'aws-amplify';
+import { Amplify, I18n } from 'aws-amplify';
 import awsconfig from './src/aws-exports';
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react-native';
 import HomeScreen from './screens/HomeScreen';
@@ -10,6 +10,7 @@ import { Button } from 'react-native';
 Amplify.configure(awsconfig);
 
 import { translations } from '@aws-amplify/ui';
+import Navigation from './navigations';
 I18n.putVocabularies(translations);
 I18n.setLanguage('fr');
 
@@ -18,9 +19,9 @@ I18n.putVocabularies({
     'Sign In': 'Se connecter',
     'Sign Up': "S'inscrire",
     'Forgot Password?': "Mot de passe oublié ?",
-    'Enter your Username':"Entrer votre nom d'utilisateur",
-    'Enter your Password':"Entrer votre mot de passe",
-    'Reset Password' : 'Reinitialiser votre mot de passe'
+    'Enter your Username': "Entrer votre nom d'utilisateur",
+    'Enter your Password': "Entrer votre mot de passe",
+    'Reset Password': 'Reinitialiser votre mot de passe'
   },
 });
 
@@ -41,11 +42,7 @@ const App = () => {
           ),
         }}
       >
-        <View style={styles.container}>
-          <HomeScreen />
-          <SignOutButton />
-        </View>
-
+          <Navigation />
       </Authenticator>
     </Authenticator.Provider>
   );
