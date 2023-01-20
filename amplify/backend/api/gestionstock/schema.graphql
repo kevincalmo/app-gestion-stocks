@@ -1,10 +1,18 @@
+type Product @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  price: Float
+  details: AWSJSON
+  orderID: ID @index(name: "byOrder")
+}
+
 type Order @model @auth(rules: [{allow: public}]) {
   id: ID!
   date: AWSDate
   quantity: Int
   price: String
-  Products: [Product] @hasMany(indexName: "byOrder", fields: ["id"])
   Providers: [Provider] @hasMany(indexName: "byOrder", fields: ["id"])
+  Products: [Product] @hasMany(indexName: "byOrder", fields: ["id"])
 }
 
 type Request @model @auth(rules: [{allow: public}]) {
@@ -12,7 +20,6 @@ type Request @model @auth(rules: [{allow: public}]) {
   date: AWSDate
   quantity: Int
   Agent: Agent @hasOne
-  Product: Product @hasOne
 }
 
 type Provider @model @auth(rules: [{allow: public}]) {
@@ -31,17 +38,6 @@ type Agent @model @auth(rules: [{allow: public}]) {
   telephone: String
 }
 
-type Product @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  name: String
-  price: Float
-  bar_code: String
-  Stock: Stock @hasOne
-  detail: AWSJSON
-  administratorID: ID! @index(name: "byAdministrator")
-  orderID: ID @index(name: "byOrder")
-}
-
 type Category @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
@@ -57,6 +53,4 @@ type Administrator @model @auth(rules: [{allow: public}, {allow: owner}, {allow:
   id: ID!
   username: String
   stockID: ID! @index(name: "byStock")
-  Products: [Product] @hasMany(indexName: "byAdministrator", fields: ["id"])
-}
- 
+} 
