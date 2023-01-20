@@ -6,3 +6,13 @@ export const getAllAdmins = async () => {
     return admins;
 
 }
+
+export async function getAll(model: any) {
+    return await DataStore.query(model);
+}
+
+export async function getOne(model: any, id: any) {
+    const products = await DataStore.query(model);
+    const product = products.filter(product => product.id === id);
+    return product;
+}
