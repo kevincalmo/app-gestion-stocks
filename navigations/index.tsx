@@ -8,6 +8,9 @@ import HomeScreen from '../screens/HomeScreen';
 import { Text } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+import Products from "../screens/Products";
+import ProductDetails from "../screens/ProductDetailsScreen";
+import ProductEdition from "../screens/ProductEdition";
 
 
 
@@ -29,11 +32,19 @@ function RootNavigator() {
                 options={{ headerShown: false }}
             />
             <Stack.Screen
-                name="workout-detail"
-                component={HomeScreen}
+                name="product-detail"
+                component={ProductDetails}
                 options={{
-                    title: 'Workout Info'
+                    title: 'Product Detail'
                 }}
+            />
+
+            <Stack.Screen
+            name="product-edition"
+            component={ProductEdition}
+            options={{
+                title: "Product Edition"
+            }}
             />
         </Stack.Navigator>
     )
@@ -68,6 +79,10 @@ function BottomTabNavigator() {
                         />
                     }
                 }}
+            />
+            <BottomTab.Screen
+                name="Products"
+                component={Products}
             />
         </BottomTab.Navigator>
     )
