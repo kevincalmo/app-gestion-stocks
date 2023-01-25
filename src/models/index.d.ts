@@ -243,7 +243,9 @@ type EagerAdministrator = {
   };
   readonly id: string;
   readonly username?: string | null;
-  readonly stockID: string;
+  readonly stockID?: string | null;
+  readonly Enterprise?: string | null;
+  readonly user_auth_id?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -255,7 +257,9 @@ type LazyAdministrator = {
   };
   readonly id: string;
   readonly username?: string | null;
-  readonly stockID: string;
+  readonly stockID?: string | null;
+  readonly Enterprise?: string | null;
+  readonly user_auth_id?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

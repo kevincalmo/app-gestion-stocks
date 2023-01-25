@@ -609,7 +609,21 @@ export const schema = {
                     "name": "stockID",
                     "isArray": false,
                     "type": "ID",
-                    "isRequired": true,
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "Enterprise": {
+                    "name": "Enterprise",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "user_auth_id": {
+                    "name": "user_auth_id",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
                     "attributes": []
                 },
                 "createdAt": {
@@ -688,5 +702,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.5",
-    "version": "10772eccea8d3885cf0bc120d8cd14d0"
+    "version": "d05976ed522af997aa5394f8e013b46f"
 };

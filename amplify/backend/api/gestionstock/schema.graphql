@@ -52,5 +52,8 @@ type Stock @model @auth(rules: [{allow: public}]) {
 type Administrator @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}]) {
   id: ID!
   username: String
-  stockID: ID! @index(name: "byStock")
-} 
+  stockID: ID @index(name: "byStock")
+  Enterprise: String
+  user_auth_id: String
+}
+ 
